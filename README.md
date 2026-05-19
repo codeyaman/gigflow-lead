@@ -138,13 +138,12 @@ All routes expect JSON payloads. Authenticated requests require a `Bearer <token
 
 #### `POST /api/auth/register`
 Creates a new account.
-- **Request Body**:
+- **Request Body** (Note: Specifying `"Admin"` as a role is blocked; all registrations default to `"Sales User"`):
   ```json
   {
     "name": "Alex Mercer",
     "email": "alex@example.com",
-    "password": "password123",
-    "role": "Sales User"
+    "password": "password123"
   }
   ```
 - **Response**:
