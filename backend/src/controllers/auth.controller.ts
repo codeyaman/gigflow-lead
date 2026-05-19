@@ -8,6 +8,11 @@ export const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const validatedData = registerSchema.parse(req.body);
 
+    if (validatedData.role === 'Admin') {
+      res.status(400).json({ message: 'Registration with Admin role is not allowed' });
+      return;
+    }
+
     const existingUser = await User.findOne({ email: validatedData.email });
     if (existingUser) {
       res.status(400).json({ message: 'User with this email already exists' });

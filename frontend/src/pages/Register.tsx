@@ -10,7 +10,7 @@ export const Register: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState<'Admin' | 'Sales User'>('Sales User');
+
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -36,7 +36,7 @@ export const Register: React.FC = () => {
         name,
         email,
         password,
-        role
+        role: 'Sales User'
       });
 
       const { token, user } = response.data;
@@ -117,20 +117,7 @@ export const Register: React.FC = () => {
                 placeholder="At least 6 characters"
               />
             </div>
-            <div>
-              <label htmlFor="role-select" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
-                Register As
-              </label>
-              <select
-                id="role-select"
-                value={role}
-                onChange={(e) => setRole(e.target.value as 'Admin' | 'Sales User')}
-                className="mt-1 block w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white text-sm"
-              >
-                <option value="Sales User">Sales User</option>
-                <option value="Admin">Admin</option>
-              </select>
-            </div>
+
           </div>
 
           <div>
